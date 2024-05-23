@@ -1,0 +1,5 @@
+name: BedWars
+version: '${project.version}'
+main: com.monitoria.bedwars.BedWars
+api-version: '1.20'
+author: Bruno D'Luka

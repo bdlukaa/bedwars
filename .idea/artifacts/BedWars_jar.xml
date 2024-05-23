@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="BedWars:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/BedWars_jar</output-path>
+    <root id="archive" name="BedWars.jar">
+      <element id="module-output" name="BedWars" />
+    </root>
+  </artifact>
+</component>
