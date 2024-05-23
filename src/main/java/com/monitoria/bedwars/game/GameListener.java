@@ -22,12 +22,15 @@ public class GameListener implements Listener {
         this.game = game;
     }
 
+    int playersJoined = 0;
+
     @EventHandler
     void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-
         player.teleport(new Location(player.getWorld(), game.lobbyX, game.lobbyY, game.lobbyZ));
+        player.setGameMode(GameMode.ADVENTURE);
 
+        playersJoined++;
         boolean added = false;
         for (int i = 0; i < game.teams.toArray().length; i++) {
             Team team = game.teams.get(i);
@@ -50,6 +53,10 @@ public class GameListener implements Listener {
         if (!added) {
             player.setGameMode(GameMode.SPECTATOR);
         }
+
+        // if (playersJoined >= 6) {
+            game.iniciar();
+        // }
     }
 
     @EventHandler
@@ -71,7 +78,6 @@ public class GameListener implements Listener {
                 break;
             }
         }
-
         if (team != null) {
             if (team.isBedActive) {
                 team.teleportPlayerToSpawn(player);
@@ -80,7 +86,19 @@ public class GameListener implements Listener {
             }
         }
 
-
+        Team aliveTeam = null;
+        int teamsAlives = 0;
+        for (int i = 0; i < game.teams.toArray().length; i++) {
+            Team t = game.teams.get(i);
+            if (t.amountAlive() >= 1) {
+                teamsAlives++;
+                aliveTeam = t;
+            }
+        }
+        if (teamsAlives == 1) {
+            // GANHAR
+            game.ganhar(aliveTeam);
+        }
     }
 
     @EventHandler
@@ -102,6 +120,7 @@ public class GameListener implements Listener {
         }
         if (team != null) {
             team.isBedActive = false;
+            System.out.println("Cama " + team.color.toString() + " quebrada");
         }
     }
 

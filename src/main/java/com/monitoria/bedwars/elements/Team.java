@@ -1,8 +1,12 @@
 package com.monitoria.bedwars.elements;
 
 import org.bukkit.Color;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Team {
 
@@ -15,19 +19,32 @@ public class Team {
     public int y;
     public int z;
 
-    Color color;
+    public Color color;
 
     public boolean isBedActive = true;
 
-    public Team(Color color, int x, int y, int z) {
+    public ItemSpawner itemSpawner;
+
+    public Team(Color color, int x, int y, int z, ItemSpawner itemSpawner) {
         this.color = color;
         this.x = x;
         this.y = y;
         this.z = z;
+        this.itemSpawner = itemSpawner;
     }
 
     public void teleportPlayerToSpawn(Player player) {
-        player.teleport(new Location(player.getWorld(), x, y, z));
+        if (player != null) player.teleport(new Location(player.getWorld(), x, y, z));
+    }
+
+    // Ver a quantidade de jogadores do time vivos
+    public int amountAlive() {
+        int alive = 0;
+        if (player1.getGameMode() == GameMode.SURVIVAL) alive++;
+        if (player2.getGameMode() == GameMode.SURVIVAL) alive++;
+        if (player3.getGameMode() == GameMode.SURVIVAL) alive++;
+
+        return alive;
     }
 
 }
