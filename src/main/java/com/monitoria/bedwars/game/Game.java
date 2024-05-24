@@ -65,20 +65,20 @@ public class Game {
         World world = Bukkit.getWorld("world");
 
         teams.clear();
-        teams.add(new Team(Color.RED, -108, 52, -47, new ItemSpawner(new Location(world, -108, 50, -52), null), Material.RED_BED));
-        teams.add(new Team(Color.PURPLE, -52, 52, -46, new ItemSpawner(new Location(world, -52, 50, -52), null), Material.PURPLE_BED));
-        teams.add(new Team(Color.BLACK, -106, 52, 47, new ItemSpawner(new Location(world, -106, 50, 54), null), Material.BLACK_BED));
-        teams.add(new Team(Color.WHITE, 43, 52, 50, new ItemSpawner(new Location(world, 43, 50, 54), null), Material.WHITE_BED));
-        teams.add(new Team(Color.BLUE, 99, 52, 50, new ItemSpawner(new Location(world, 99, 50, 54), null), Material.BLUE_BED));
+        teams.add(new Team(Color.RED, -108, 52, -47, new ItemSpawner(new Location(world, -108, 50, -52), null, 0), Material.RED_BED));
+        teams.add(new Team(Color.PURPLE, -52, 52, -46, new ItemSpawner(new Location(world, -52, 50, -52), null, 0), Material.PURPLE_BED));
+        teams.add(new Team(Color.BLACK, -106, 52, 47, new ItemSpawner(new Location(world, -106, 50, 54), null, 0), Material.BLACK_BED));
+        teams.add(new Team(Color.WHITE, 43, 52, 50, new ItemSpawner(new Location(world, 43, 50, 54), null, 0), Material.WHITE_BED));
+        teams.add(new Team(Color.BLUE, 99, 52, 50, new ItemSpawner(new Location(world, 99, 50, 54), null, 0), Material.BLUE_BED));
 
 
         itemSpawnPoints.clear();
-        itemSpawnPoints.add(new ItemSpawner(new Location(world, 69, 51, 0), Material.DIAMOND));
-        itemSpawnPoints.add(new ItemSpawner(new Location(world, 127, 51, 1), Material.EMERALD));
-        itemSpawnPoints.add(new ItemSpawner(new Location(world, 2, 45, -9), Material.EMERALD));
-        itemSpawnPoints.add(new ItemSpawner(new Location(world, -12, 57, 10), Material.EMERALD));
-        itemSpawnPoints.add(new ItemSpawner(new Location(world, -136, 51, 0), Material.EMERALD));
-        itemSpawnPoints.add(new ItemSpawner(new Location(world, -78, 51, 1), Material.DIAMOND));
+        itemSpawnPoints.add(new ItemSpawner(new Location(world, 69, 51, 0), Material.DIAMOND, 300));
+        itemSpawnPoints.add(new ItemSpawner(new Location(world, 127, 51, 1), Material.EMERALD, 500));
+        itemSpawnPoints.add(new ItemSpawner(new Location(world, 2, 45, -9), Material.EMERALD, 500));
+        itemSpawnPoints.add(new ItemSpawner(new Location(world, -12, 57, 10), Material.EMERALD, 500));
+        itemSpawnPoints.add(new ItemSpawner(new Location(world, -136, 51, 0), Material.EMERALD, 500));
+        itemSpawnPoints.add(new ItemSpawner(new Location(world, -78, 51, 1), Material.DIAMOND, 300));
     }
 
 

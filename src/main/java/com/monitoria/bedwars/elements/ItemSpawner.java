@@ -19,9 +19,15 @@ public class ItemSpawner {
 
     public Material itemType;
 
-    public ItemSpawner(Location location, Material itemType) {
+    public int factor = 0;
+
+    public ItemSpawner(Location location, Material itemType, int factor) {
         this.location = location;
         this.itemType = itemType;
+        this.factor = factor;
+        if (factor == 0) {
+            this.factor = 100;
+        }
     }
 
     public void startTimer() {
@@ -34,7 +40,7 @@ public class ItemSpawner {
         }.runTaskTimer(
                 Bukkit.getPluginManager().getPlugin("BedWars"),
                 0,
-                100
+                factor
         );
     }
 
