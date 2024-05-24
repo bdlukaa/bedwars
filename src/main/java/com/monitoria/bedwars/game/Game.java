@@ -30,10 +30,17 @@ public class Game {
         for (int i = 0; i < teams.size(); i++) {
             Team team = teams.get(i);
 
+            for (Player player : team.getPlayers()) {
+                if (player != null) {
+                    team.teleportPlayerToSpawn(player);
+                    player.setGameMode(GameMode.SURVIVAL);
+                    player.setRespawnLocation(new Location(player.getWorld(), team.x, team.y, team.z));
+                    player.getInventory().clear();
+                }
+            }
+
             // Teletransportar jogares
-            team.teleportPlayerToSpawn(team.player1);
-            team.teleportPlayerToSpawn(team.player2);
-            team.teleportPlayerToSpawn(team.player3);
+
 
             // Começar o timer dos itemSpawners
             team.itemSpawner.startTimer();
@@ -42,7 +49,12 @@ public class Game {
     }
 
     void finalizar() {
-
+        for (Team team : teams) {
+            for (Player player : team.getPlayers()) {
+                player.setRespawnLocation(new Location(player.getWorld(), lobbyX, lobbyY, lobbyZ));
+                player.getInventory().clear();
+            }
+        }
     }
 
     void ganhar(Team team) {
@@ -50,7 +62,7 @@ public class Game {
     }
 
     void resetar() {
-        World world = Bukkit.getWorld("overworld");
+        World world = Bukkit.getWorld("world");
 
         teams.clear();
         teams.add(new Team(Color.RED, -108, 52, -47, new ItemSpawner(new Location(world, -108, 50, -52), null), Material.RED_BED));

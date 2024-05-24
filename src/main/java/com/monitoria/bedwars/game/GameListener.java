@@ -29,6 +29,7 @@ public class GameListener implements Listener {
         Player player = event.getPlayer();
         player.teleport(new Location(player.getWorld(), game.lobbyX, game.lobbyY, game.lobbyZ));
         player.setGameMode(GameMode.ADVENTURE);
+        player.getInventory().clear();
 
         playersJoined++;
         boolean added = false;
@@ -98,6 +99,8 @@ public class GameListener implements Listener {
             if (block.getType() == team.bedMaterial) {
                 team.isBedActive = false;
                 System.out.println("Cama " + team.color.toString() + " quebrada");
+
+                event.setDropItems(false);
             }
         }
     }
