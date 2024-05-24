@@ -35,18 +35,12 @@ public class GameListener implements Listener {
         for (int i = 0; i < game.teams.toArray().length; i++) {
             Team team = game.teams.get(i);
 
-            if (team.player1 == null) {
-                team.player1 = player;
-                added = true;
-                break;
-            } else if (team.player2 == null) {
-                team.player2 = player;
-                added = true;
-                break;
-            } else if (team.player3 == null) {
-                team.player3 = player;
-                added = true;
-                break;
+            for (Player teamPlayer : team.getPlayers()) {
+                if (teamPlayer == null) {
+                    teamPlayer = player;
+                    added = true;
+                    break;
+                }
             }
         }
 
@@ -54,9 +48,9 @@ public class GameListener implements Listener {
             player.setGameMode(GameMode.SPECTATOR);
         }
 
-        // if (playersJoined >= 6) {
+        if (playersJoined >= 6) {
             game.iniciar();
-        // }
+        }
     }
 
     @EventHandler
@@ -64,18 +58,12 @@ public class GameListener implements Listener {
         Player player = event.getEntity();
 
         Team team = null;
-        for (int i = 0; i < game.teams.toArray().length; i++) {
-            Team t = game.teams.get(i);
-
-            if (t.player1 == player) {
-                team = t;
-                break;
-            } else if (t.player2 == player) {
-                team = t;
-                break;
-            } else if (t.player3 == null) {
-                team = t;
-                break;
+        for (Team t : game.teams) {
+            for (Player teamPlayer : team.getPlayers()) {
+                if (teamPlayer == player) {
+                    team = t;
+                    break;
+                }
             }
         }
         if (team != null) {
@@ -106,21 +94,11 @@ public class GameListener implements Listener {
         Player player = event.getPlayer();
         Block block = event.getBlock();
 
-        Team team = null;
-        if (block.getType() == Material.RED_BED) {
-            team = game.teams.get(0);
-        } else if (block.getType() == Material.BLUE_BED) {
-            team = game.teams.get(1);
-        } else if (block.getType() == Material.BLACK_BED) {
-            team = game.teams.get(2);
-        } else if (block.getType() == Material.WHITE_BED) {
-            team = game.teams.get(3);
-        } else if (block.getType() == Material.PURPLE_BED) {
-            team = game.teams.get(4);
-        }
-        if (team != null) {
-            team.isBedActive = false;
-            System.out.println("Cama " + team.color.toString() + " quebrada");
+        for (Team team : game.teams) {
+            if (block.getType() == team.bedMaterial) {
+                team.isBedActive = false;
+                System.out.println("Cama " + team.color.toString() + " quebrada");
+            }
         }
     }
 

@@ -3,6 +3,7 @@ package com.monitoria.bedwars.elements;
 import org.bukkit.Color;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -14,6 +15,11 @@ public class Team {
     public Player player2;
     public Player player3;
 
+    public Player[] getPlayers() {
+        Player[] players = new Player[] { player1, player2, player3 };
+        return players;
+    }
+
     // Spawn points
     public int x;
     public int y;
@@ -24,13 +30,15 @@ public class Team {
     public boolean isBedActive = true;
 
     public ItemSpawner itemSpawner;
+    public Material bedMaterial;
 
-    public Team(Color color, int x, int y, int z, ItemSpawner itemSpawner) {
+    public Team(Color color, int x, int y, int z, ItemSpawner itemSpawner, Material material) {
         this.color = color;
         this.x = x;
         this.y = y;
         this.z = z;
         this.itemSpawner = itemSpawner;
+        this.bedMaterial = material;
     }
 
     public void teleportPlayerToSpawn(Player player) {

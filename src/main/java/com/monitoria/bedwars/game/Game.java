@@ -53,11 +53,11 @@ public class Game {
         World world = Bukkit.getWorld("overworld");
 
         teams.clear();
-        teams.add(new Team(Color.RED, -108, 52, -47, new ItemSpawner(new Location(world, -108, 50, -52), null)));
-        teams.add(new Team(Color.PURPLE, -52, 52, -46, new ItemSpawner(new Location(world, -52, 50, -52), null)));
-        teams.add(new Team(Color.BLACK, -106, 52, 47, new ItemSpawner(new Location(world, -106, 50, 54), null)));
-        teams.add(new Team(Color.WHITE, 43, 52, 50, new ItemSpawner(new Location(world, 43, 50, 54), null)));
-        teams.add(new Team(Color.BLUE, 99, 52, 50, new ItemSpawner(new Location(world, 99, 50, 54), null)));
+        teams.add(new Team(Color.RED, -108, 52, -47, new ItemSpawner(new Location(world, -108, 50, -52), null), Material.RED_BED));
+        teams.add(new Team(Color.PURPLE, -52, 52, -46, new ItemSpawner(new Location(world, -52, 50, -52), null), Material.PURPLE_BED));
+        teams.add(new Team(Color.BLACK, -106, 52, 47, new ItemSpawner(new Location(world, -106, 50, 54), null), Material.BLACK_BED));
+        teams.add(new Team(Color.WHITE, 43, 52, 50, new ItemSpawner(new Location(world, 43, 50, 54), null), Material.WHITE_BED));
+        teams.add(new Team(Color.BLUE, 99, 52, 50, new ItemSpawner(new Location(world, 99, 50, 54), null), Material.BLUE_BED));
 
 
         itemSpawnPoints.clear();
