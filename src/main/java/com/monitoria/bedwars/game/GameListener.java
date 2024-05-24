@@ -12,9 +12,13 @@ import org.bukkit.entity.Villager;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.player.PlayerRespawnEvent;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 
 public class GameListener implements Listener {
     //Colocar limite de altura;
@@ -110,12 +114,36 @@ public class GameListener implements Listener {
     }
 
     @EventHandler
-    void onPlayerInteractAtEntityEvent(PlayerInteractAtEntityEvent event) {
-
+    void onPlayerInteractAtEntity(PlayerInteractAtEntityEvent event) {
         Entity entity = event.getRightClicked();
         if (entity instanceof Villager) {
             Shop shop = new Shop();
             shop.abrirLoja(event.getPlayer());
+        }
+
+    }
+
+    @EventHandler
+    void onPlayerRespawn(PlayerRespawnEvent event) {
+        Player player = event.getPlayer();
+        Inventory playerInv = player.getInventory();
+        playerInv.addItem(new ItemStack(Material.WOODEN_SWORD));
+    }
+
+    @EventHandler
+    void onInventoryClick(InventoryClickEvent event) {
+
+        if (event.getInventory() == Shop.inv) {
+            int slot = event.getRawSlot();
+            ItemStack stack = event.getInventory().getItem(slot);
+            ItemStack price = Shop.prices.get(slot);
+
+            Player player = (Player) event.getWhoClicked();
+            Inventory playerInventory = player.getInventory();
+
+            if (playerInventory.containsAtLeast(price, price.getAmount())) {
+                playerInventory.addItem(stack);
+            }
         }
 
     }

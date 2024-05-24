@@ -7,15 +7,19 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Shop {
 
-    private Inventory inv;
+    public static Inventory inv;
+
+    public static ArrayList<ItemStack> prices = new ArrayList<>{};
 
     public void abrirLoja(Player player) {
         inv = Bukkit.createInventory(null, 9 * 3, "Loja :)");
 
+        Shop.prices = new ItemStack[]{};
         // blocos
         inv.addItem(createGuiItem(new ItemStack(Material.STONE_SWORD, 1), new ItemStack(Material.IRON_INGOT, 15), "Espada de Pedra", "§a15 barras de ferro"));
         inv.addItem(createGuiItem(new ItemStack(Material.IRON_SWORD, 1), new ItemStack(Material.GOLD_INGOT, 25), "Espada de Ferro", "§a25 barras de ouro"));
@@ -42,6 +46,8 @@ public class Shop {
         meta.setLore(Arrays.asList(lore));
 
         item.setItemMeta(meta);
+
+        prices.add(price);
 
         return item;
     }

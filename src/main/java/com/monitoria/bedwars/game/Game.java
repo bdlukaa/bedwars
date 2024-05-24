@@ -8,6 +8,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
 import org.bukkit.inventory.ItemType;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +53,7 @@ public class Game {
     }
 
     void finalizar() {
+        Bukkit.broadcastMessage("FINALIZANDO JOGO");
         for (Team team : teams) {
             for (Player player : team.getPlayers()) {
                 player.setRespawnLocation(new Location(player.getWorld(), lobbyX, lobbyY, lobbyZ));
@@ -61,7 +63,14 @@ public class Game {
     }
 
     void ganhar(Team team) {
-        System.out.println("Time " + team.color.toString() + " GANHOU!!");
+        Bukkit.broadcastMessage("O time " + team.color.toString() + " GANHOU!!");
+        new BukkitRunnable() {
+
+            public void run() {
+                finalizar();
+            }
+
+        }.runTaskLater(Bukkit.getPluginManager().getPlugin("BedWars"), 1000 * 5);
     }
 
     void resetar() {
