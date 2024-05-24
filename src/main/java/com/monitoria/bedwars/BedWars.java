@@ -1,5 +1,6 @@
 package com.monitoria.bedwars;
 
+import com.monitoria.bedwars.elements.StartCommand;
 import com.monitoria.bedwars.game.Game;
 import com.monitoria.bedwars.game.GameListener;
 import org.bukkit.Bukkit;
@@ -10,7 +11,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class BedWars extends JavaPlugin {
 
-    Game game;
+    public static Game game;
 
     @Override
     public void onEnable() {
@@ -18,6 +19,7 @@ public final class BedWars extends JavaPlugin {
 
         game = new Game();
         getServer().getPluginManager().registerEvents(new GameListener(game), this);
+        this.getCommand("iniciar_bedwars").setExecutor(new StartCommand());
     }
 
     @Override

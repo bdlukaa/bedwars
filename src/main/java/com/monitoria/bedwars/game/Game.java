@@ -26,7 +26,7 @@ public class Game {
     }
 
 
-    void iniciar() {
+    public void iniciar() {
         for (int i = 0; i < teams.size(); i++) {
             Team team = teams.get(i);
 
