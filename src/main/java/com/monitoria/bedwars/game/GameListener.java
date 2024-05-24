@@ -1,14 +1,18 @@
 package com.monitoria.bedwars.game;
 
+import com.monitoria.bedwars.elements.Shop;
 import com.monitoria.bedwars.elements.Team;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Villager;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.EventHandler;
 
@@ -103,6 +107,17 @@ public class GameListener implements Listener {
                 event.setDropItems(false);
             }
         }
+    }
+
+    @EventHandler
+    void onPlayerInteractAtEntityEvent(PlayerInteractAtEntityEvent event) {
+
+        Entity entity = event.getRightClicked();
+        if (entity instanceof Villager) {
+            Shop shop = new Shop();
+            shop.abrirLoja(event.getPlayer());
+        }
+
     }
 
 }

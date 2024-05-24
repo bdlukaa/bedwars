@@ -3,7 +3,10 @@ package com.monitoria.bedwars.game;
 import com.monitoria.bedwars.elements.ItemSpawner;
 import com.monitoria.bedwars.elements.Team;
 import org.bukkit.*;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Villager;
 import org.bukkit.inventory.ItemType;
 
 import java.util.ArrayList;
@@ -39,12 +42,12 @@ public class Game {
                 }
             }
 
-            // Teletransportar jogares
-
+            World world = Bukkit.getWorld("world");
+            Entity entity = world.spawnEntity(new Location(world, team.x, team.y, team.z), EntityType.VILLAGER);
+            entity.setCustomName("§aCainã");
 
             // Começar o timer dos itemSpawners
             team.itemSpawner.startTimer();
-            team.itemSpawner.spawn();
         }
     }
 

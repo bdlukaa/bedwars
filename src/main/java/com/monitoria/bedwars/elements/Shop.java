@@ -13,7 +13,7 @@ public class Shop {
 
     private Inventory inv;
 
-    void abrirLoja(Player player) {
+    public void abrirLoja(Player player) {
         inv = Bukkit.createInventory(null, 9 * 3, "Loja :)");
 
         // blocos
@@ -28,6 +28,7 @@ public class Shop {
         inv.addItem(createGuiItem(new ItemStack(Material.ENDER_PEARL, 2), new ItemStack(Material.DIAMOND, 16), "Pérola do Fim", "§a16 diamantes"));
         inv.addItem(createGuiItem(new ItemStack(Material.IRON_CHESTPLATE, 1), new ItemStack(Material.DIAMOND, 24), "Peitoral", "§a24 diamantes"));
 
+        player.openInventory(inv);
     }
 
     // Nice little method to create a gui item with a custom name, and description
