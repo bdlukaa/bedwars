@@ -41,16 +41,33 @@ public class GameListener implements Listener {
 
         playersJoined++;
         boolean added = false;
-        for (int i = 0; i < game.teams.toArray().length; i++) {
-            Team team = game.teams.get(i);
+        for (Team team : game.teams) {
+            if (team.player1 == null) {
+                team.player1 = player;
+                added = true;
+                break;
+            }
+        }
 
-            for (Player teamPlayer : team.getPlayers()) {
-                if (teamPlayer == null) {
-                    teamPlayer = player;
+        if (!added) {
+            for (Team team : game.teams) {
+                if (team.player2 == null) {
+                    team.player2 = player;
                     added = true;
                     break;
                 }
             }
+        }
+
+        if (!added) {
+            for (Team team : game.teams) {
+                if (team.player3 == null) {
+                    team.player3 = player;
+                    added = true;
+                    break;
+                }
+            }
+
         }
 
         if (!added) {
