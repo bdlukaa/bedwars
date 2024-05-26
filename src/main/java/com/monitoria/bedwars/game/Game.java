@@ -31,9 +31,7 @@ public class Game {
 
 
     public void iniciar() {
-        for (int i = 0; i < teams.size(); i++) {
-            Team team = teams.get(i);
-
+        for (Team team : teams) {
             for (Player player : team.getPlayers()) {
                 if (player != null) {
                     team.teleportPlayerToSpawn(player);

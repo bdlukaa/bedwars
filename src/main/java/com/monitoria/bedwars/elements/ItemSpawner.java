@@ -48,20 +48,22 @@ public class ItemSpawner {
     int switcher = 0;
 
     public void spawn() {
+        World world = location.getWorld();
+        if (world == null) return;
         if (itemType == null) {
             if (switcher % 2 == 0) {
-                location.getWorld().dropItem(location, new ItemStack(Material.IRON_INGOT));
-                location.getWorld().dropItem(location, new ItemStack(Material.IRON_INGOT));
-                location.getWorld().dropItem(location, new ItemStack(Material.IRON_INGOT));
+                world.dropItem(location, new ItemStack(Material.IRON_INGOT));
+                world.dropItem(location, new ItemStack(Material.IRON_INGOT));
+                world.dropItem(location, new ItemStack(Material.IRON_INGOT));
             } else {
-                location.getWorld().dropItem(location, new ItemStack(Material.GOLD_INGOT));
-                location.getWorld().dropItem(location, new ItemStack(Material.GOLD_INGOT));
-                location.getWorld().dropItem(location, new ItemStack(Material.GOLD_INGOT));
+                world.dropItem(location, new ItemStack(Material.GOLD_INGOT));
+                world.dropItem(location, new ItemStack(Material.GOLD_INGOT));
+                world.dropItem(location, new ItemStack(Material.GOLD_INGOT));
             }
             switcher++;
             System.out.println("Spawnou item");
         } else {
-            location.getWorld().dropItem(location, new ItemStack(itemType));
+            world.dropItem(location, new ItemStack(itemType));
         }
     }
 

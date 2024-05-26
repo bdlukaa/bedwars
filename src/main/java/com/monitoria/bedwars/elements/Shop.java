@@ -14,12 +14,12 @@ public class Shop {
 
     public static Inventory inv;
 
-    public static ArrayList<ItemStack> prices = new ArrayList<>{};
+    public static ArrayList<ItemStack> prices = new ArrayList<ItemStack>();
 
     public void abrirLoja(Player player) {
         inv = Bukkit.createInventory(null, 9 * 3, "Loja :)");
 
-        Shop.prices = new ItemStack[]{};
+        Shop.prices = new ArrayList<>();
         // blocos
         inv.addItem(createGuiItem(new ItemStack(Material.STONE_SWORD, 1), new ItemStack(Material.IRON_INGOT, 15), "Espada de Pedra", "§a15 barras de ferro"));
         inv.addItem(createGuiItem(new ItemStack(Material.IRON_SWORD, 1), new ItemStack(Material.GOLD_INGOT, 25), "Espada de Ferro", "§a25 barras de ouro"));
