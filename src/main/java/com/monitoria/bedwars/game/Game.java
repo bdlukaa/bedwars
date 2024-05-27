@@ -31,6 +31,15 @@ public class Game {
 
 
     public void iniciar() {
+        for (World w : Bukkit.getWorlds()) {
+            for (org.bukkit.entity.Entity e : w
+                    .getEntities()) {
+                if (e instanceof Villager) {
+                    e.remove();
+                }
+            }
+        }
+        
         for (Team team : teams) {
             for (Player player : team.getPlayers()) {
                 if (player != null) {
@@ -42,8 +51,14 @@ public class Game {
             }
 
             World world = Bukkit.getWorld("world");
-            Entity entity = world.spawnEntity(new Location(world, team.x, team.y, team.z), EntityType.VILLAGER);
-            entity.setCustomName("§aCainã");
+            Entity entity = world.spawnEntity(new Location(world, team.x, team.y - 2, team.z), EntityType.VILLAGER);
+            if (entity instanceof Villager) {
+                Villager villager = (Villager) entity;
+                villager.setInvulnerable(true);
+                //desliga "inteligencia" das entidades
+                villager.setAI(false);
+                villager.setCustomName("§aCainã");
+            }
 
             // Começar o timer dos itemSpawners
             team.itemSpawner.startTimer();
@@ -56,6 +71,15 @@ public class Game {
             for (Player player : team.getPlayers()) {
                 player.setRespawnLocation(new Location(player.getWorld(), lobbyX, lobbyY, lobbyZ));
                 player.getInventory().clear();
+            }
+        }
+
+        for (World w : Bukkit.getWorlds()) {
+            for (org.bukkit.entity.Entity e : w
+                    .getEntities()) {
+                if (e instanceof Villager) {
+                    e.remove();
+                }
             }
         }
     }

@@ -42,6 +42,7 @@ public class Team {
     }
 
     public void teleportPlayerToSpawn(Player player) {
+
         if (player != null) player.teleport(new Location(player.getWorld(), x, y, z));
     }
 

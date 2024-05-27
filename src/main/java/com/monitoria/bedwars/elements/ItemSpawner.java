@@ -55,7 +55,7 @@ public class ItemSpawner {
                 world.dropItem(location, new ItemStack(Material.IRON_INGOT));
                 world.dropItem(location, new ItemStack(Material.IRON_INGOT));
                 world.dropItem(location, new ItemStack(Material.IRON_INGOT));
-            } else {
+            } else if (switcher % 5 == 0) {
                 world.dropItem(location, new ItemStack(Material.GOLD_INGOT));
                 world.dropItem(location, new ItemStack(Material.GOLD_INGOT));
                 world.dropItem(location, new ItemStack(Material.GOLD_INGOT));

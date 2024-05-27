@@ -135,16 +135,39 @@ public class GameListener implements Listener {
 
     @EventHandler
     void onPlayerInteractAtEntity(PlayerInteractAtEntityEvent event) {
+        //Villager
         Entity entity = event.getRightClicked();
         if (entity instanceof Villager) {
             Shop shop = new Shop();
             shop.abrirLoja(event.getPlayer());
         }
 
+        //Não se bater no lobby
+        Entity entity2 = event.getRightClicked();
+        if (entity2 instanceof Player && game.status == GameStatus.iniciando){
+            event.setCancelled(true);
+        }
+
+        //Não se bater no time
+        Team team = null;
+        for (Team t : game.teams) {
+            for (Player teamPlayer : team.getPlayers()) {
+                if (teamPlayer == event.getPlayer()) {
+                    for (Player otherPlayer : team.getPlayers()){
+                        if (otherPlayer == entity2){
+                            event.setCancelled(true);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
     }
 
     @EventHandler
     void onPlayerRespawn(PlayerRespawnEvent event) {
+        
         Player player = event.getPlayer();
         Inventory playerInv = player.getInventory();
         playerInv.addItem(new ItemStack(Material.WOODEN_SWORD));
