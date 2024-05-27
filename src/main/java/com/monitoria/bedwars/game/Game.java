@@ -38,6 +38,9 @@ public class Game {
                     player.setGameMode(GameMode.SURVIVAL);
                     player.setRespawnLocation(new Location(player.getWorld(), team.x, team.y, team.z));
                     player.getInventory().clear();
+                    
+                    //11 - mudar a cor do nome da pessoa para a cor do time dela
+                    player.setDisplayName(ChatColor.team.color + player.getDisplayName());
                 }
             }
 
