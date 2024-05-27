@@ -43,7 +43,13 @@ public class Game {
 
             World world = Bukkit.getWorld("world");
             Entity entity = world.spawnEntity(new Location(world, team.x, team.y, team.z), EntityType.VILLAGER);
-            entity.setCustomName("§aCainã");
+            if (entity instanceof Villager) {
+                Villager villager = (Villager) entity;
+                villager.setInvulnerable(true);
+                //desliga "inteligencia" das entidades
+                villager.setAI(false);
+                villager.setCustomName("§aCainã");
+            }
 
             // Começar o timer dos itemSpawners
             team.itemSpawner.startTimer();
