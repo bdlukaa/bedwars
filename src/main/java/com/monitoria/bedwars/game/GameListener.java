@@ -194,4 +194,13 @@ public class GameListener implements Listener {
 
     }
 
+    @EventHandler
+    void onHunger(FoodLevelChangeEvent event) {
+        if (event.getEntity() instanceof Player) {
+            Player player = (Player) event.getEntity();
+            event.setCancelled(true);
+            event.setFoodLevel(20);
+        }
+    }
+
 }

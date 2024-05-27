@@ -25,7 +25,7 @@ public class Shop {
         inv.addItem(createGuiItem(new ItemStack(Material.IRON_SWORD, 1), new ItemStack(Material.GOLD_INGOT, 25), "Espada de Ferro", "§a25 barras de ouro"));
         inv.addItem(createGuiItem(new ItemStack(Material.WHITE_WOOL, 64), new ItemStack(Material.IRON_INGOT, 16), "Lâ", "§a16 barras de ferro"));
         inv.addItem(createGuiItem(new ItemStack(Material.GLASS, 12), new ItemStack(Material.IRON_INGOT, 32), "Vidro", "§a32 barras de ferro"));
-        inv.addItem(createGuiItem(new ItemStack(Material.OBSIDIAN, 2), new ItemStack(Material.EMERALD, 16), "Obsidian", "§a4 esmeralda"));
+        inv.addItem(createGuiItem(new ItemStack(Material.OBSIDIAN, 2), new ItemStack(Material.EMERALD, 16), "Obsidian", "§a16 esmeraldas"));
 
         // items
         inv.addItem(createGuiItem(new ItemStack(Material.EGG, 2), new ItemStack(Material.IRON_INGOT, 12), "Ovos", "§a12 ferros"));
