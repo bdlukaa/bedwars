@@ -160,7 +160,10 @@ public class GameListener implements Listener {
 
             if (playerInventory.containsAtLeast(price, price.getAmount())) {
                 playerInventory.addItem(stack);
+                playerInventory.removeItem(price);
             }
+
+            event.setCancelled(true);
         }
 
     }
