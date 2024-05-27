@@ -66,6 +66,10 @@ public class Game {
 
             // Começar o timer dos itemSpawners
             team.itemSpawner.startTimer();
+        }   
+        // Diamante e esmeralda
+        for (int i = 0; i < itemSpawnPoints.size(); i++) {
+            itemSpawnPoints.get(i).startTimer();
         }
     }
 
