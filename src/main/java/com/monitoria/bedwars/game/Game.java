@@ -47,6 +47,10 @@ public class Game {
                     player.setGameMode(GameMode.SURVIVAL);
                     player.setRespawnLocation(new Location(player.getWorld(), team.x, team.y, team.z));
                     player.getInventory().clear();
+                    player.sendMessage("Você está no time" + team.color.toString()+"!");
+                    
+                    //11 - mudar a cor do nome do player para a cor do time dele
+                    player.setDisplayName(team.color.toString() + player.getDisplayName());
                 }
             }
 
