@@ -41,6 +41,7 @@ public class Game {
                     
                     //11 - mudar a cor do nome da pessoa para a cor do time dela
                     player.setDisplayName(ChatColor.team.color + player.getDisplayName());
+                    //player.setDisplayName(team.color.toString() + player.getDisplayName());
                 }
             }
 
