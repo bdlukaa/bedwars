@@ -83,6 +83,9 @@ public class GameListener implements Listener {
     void onPlayerDeath(PlayerDeathEvent event) {
         Player player = event.getEntity();
 
+        event.setKeepInventory(false);
+        event.setKeepLevel(false);
+
         Team team = null;
         for (Team t : game.teams) {
             for (Player teamPlayer : team.getPlayers()) {
