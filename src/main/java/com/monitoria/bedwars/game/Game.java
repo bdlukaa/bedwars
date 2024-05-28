@@ -117,12 +117,12 @@ public class Game {
 
 
         itemSpawnPoints.clear();
-        itemSpawnPoints.add(new ItemSpawner(new Location(world, 69, 51, 0), Material.DIAMOND, 300));
-        itemSpawnPoints.add(new ItemSpawner(new Location(world, 127, 51, 1), Material.EMERALD, 500));
-        itemSpawnPoints.add(new ItemSpawner(new Location(world, 2, 45, -9), Material.EMERALD, 500));
-        itemSpawnPoints.add(new ItemSpawner(new Location(world, -12, 57, 10), Material.EMERALD, 500));
-        itemSpawnPoints.add(new ItemSpawner(new Location(world, -136, 51, 0), Material.EMERALD, 500));
-        itemSpawnPoints.add(new ItemSpawner(new Location(world, -78, 51, 1), Material.DIAMOND, 300));
+        itemSpawnPoints.add(new ItemSpawner(new Location(world, 69, 51 + 2, 0), Material.DIAMOND, 300));
+        itemSpawnPoints.add(new ItemSpawner(new Location(world, 127, 51 + 2, 1), Material.EMERALD, 500));
+        itemSpawnPoints.add(new ItemSpawner(new Location(world, 2, 45 + 2, -9), Material.EMERALD, 500));
+        itemSpawnPoints.add(new ItemSpawner(new Location(world, -12, 57 + 2, 10), Material.EMERALD, 500));
+        itemSpawnPoints.add(new ItemSpawner(new Location(world, -136, 51 + 2, 0), Material.EMERALD, 500));
+        itemSpawnPoints.add(new ItemSpawner(new Location(world, -78, 51 + 2, 1), Material.DIAMOND, 300));
     }
 
 
