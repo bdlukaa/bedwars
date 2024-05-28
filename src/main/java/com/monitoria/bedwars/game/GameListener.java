@@ -91,7 +91,7 @@ public class GameListener implements Listener {
 
         Team team = null;
         for (Team t : game.teams) {
-            for (Player teamPlayer : team.getPlayers()) {
+            for (Player teamPlayer : t.getPlayers()) {
                 if (teamPlayer == player) {
                     team = t;
                     break;
@@ -123,7 +123,6 @@ public class GameListener implements Listener {
 
     @EventHandler
     void onBlockBreak(BlockBreakEvent event) {
-        Player player = event.getPlayer();
         Block block = event.getBlock();
 
         for (Team team : game.teams) {
@@ -153,11 +152,10 @@ public class GameListener implements Listener {
         }
 
         //Não se bater no time
-        Team team = null;
         for (Team t : game.teams) {
             for (Player teamPlayer : t.getPlayers()) {
                 if (teamPlayer == event.getPlayer()) {
-                    for (Player otherPlayer : team.getPlayers()){
+                    for (Player otherPlayer : t.getPlayers()){
                         if (otherPlayer == entity2){
                             event.setCancelled(true);
                             break;
@@ -207,7 +205,6 @@ public class GameListener implements Listener {
     @EventHandler
     void onHunger(FoodLevelChangeEvent event) {
         if (event.getEntity() instanceof Player) {
-            Player player = (Player) event.getEntity();
             event.setCancelled(true);
             event.setFoodLevel(20);
         }
