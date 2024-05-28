@@ -1,6 +1,7 @@
 package com.monitoria.bedwars.game;
 
 import com.monitoria.bedwars.elements.ItemSpawner;
+import com.monitoria.bedwars.elements.Shop;
 import com.monitoria.bedwars.elements.Team;
 import org.bukkit.*;
 import org.bukkit.entity.Entity;
@@ -27,6 +28,7 @@ public class Game {
 
     public Game() {
         resetar();
+        Shop.initializeShop();
     }
 
 

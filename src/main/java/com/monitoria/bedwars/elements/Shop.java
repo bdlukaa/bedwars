@@ -14,9 +14,7 @@ public class Shop {
 
     public static Inventory inv;
 
-    public static ArrayList<ItemStack> prices = new ArrayList<ItemStack>();
-
-    public void abrirLoja(Player player) {
+    public static void initializeShop() {
         inv = Bukkit.createInventory(null, 9 * 3, "Loja :)");
 
         Shop.prices = new ArrayList<>();
@@ -31,12 +29,16 @@ public class Shop {
         inv.addItem(createGuiItem(new ItemStack(Material.EGG, 2), new ItemStack(Material.IRON_INGOT, 12), "Ovos", "§a12 ferros"));
         inv.addItem(createGuiItem(new ItemStack(Material.ENDER_PEARL, 2), new ItemStack(Material.DIAMOND, 16), "Pérola do Fim", "§a16 diamantes"));
         inv.addItem(createGuiItem(new ItemStack(Material.IRON_CHESTPLATE, 1), new ItemStack(Material.DIAMOND, 24), "Peitoral", "§a24 diamantes"));
+    }
 
+    public static ArrayList<ItemStack> prices = new ArrayList<ItemStack>();
+
+    public void abrirLoja(Player player) {
         player.openInventory(inv);
     }
 
     // Nice little method to create a gui item with a custom name, and description
-    protected ItemStack createGuiItem(final ItemStack item, final ItemStack price, final String name, final String... lore) {
+    protected static ItemStack createGuiItem(final ItemStack item, final ItemStack price, final String name, final String... lore) {
         final ItemMeta meta = item.getItemMeta();
 
         // Set the name of the item
