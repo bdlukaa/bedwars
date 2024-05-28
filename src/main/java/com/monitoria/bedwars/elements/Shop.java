@@ -19,11 +19,12 @@ public class Shop {
 
         Shop.prices = new ArrayList<>();
         // blocos
-        inv.addItem(createGuiItem(new ItemStack(Material.STONE_SWORD, 1), new ItemStack(Material.IRON_INGOT, 15), "Espada de Pedra", "§a15 barras de ferro"));
-        inv.addItem(createGuiItem(new ItemStack(Material.IRON_SWORD, 1), new ItemStack(Material.GOLD_INGOT, 25), "Espada de Ferro", "§a25 barras de ouro"));
-        inv.addItem(createGuiItem(new ItemStack(Material.WHITE_WOOL, 64), new ItemStack(Material.IRON_INGOT, 16), "Lâ", "§a16 barras de ferro"));
-        inv.addItem(createGuiItem(new ItemStack(Material.GLASS, 12), new ItemStack(Material.IRON_INGOT, 32), "Vidro", "§a32 barras de ferro"));
-        inv.addItem(createGuiItem(new ItemStack(Material.OBSIDIAN, 2), new ItemStack(Material.EMERALD, 16), "Obsidian", "§a16 esmeraldas"));
+        inv.addItem(createGuiItem(new ItemStack(Material.STONE_SWORD, 1), new ItemStack(Material.IRON_INGOT, 7), "Espada de Pedra", "§a7 barras de ferro"));
+        inv.addItem(createGuiItem(new ItemStack(Material.IRON_SWORD, 1), new ItemStack(Material.GOLD_INGOT, 7), "Espada de Ferro", "§a14 barras de ouro"));
+        inv.addItem(createGuiItem(new ItemStack(Material.WHITE_WOOL, 64), new ItemStack(Material.IRON_INGOT, 8), "Lâ", "§a8 barras de ferro"));
+        inv.addItem(createGuiItem(new ItemStack(Material.GLASS, 12), new ItemStack(Material.IRON_INGOT, 16), "Vidro", "§a16 barras de ferro"));
+        inv.addItem(createGuiItem(new ItemStack(Material.OBSIDIAN, 2), new ItemStack(Material.EMERALD, 8), "Obsidian", "§a8 esmeraldas"));
+        inv.addItem(createGuiItem(new ItemStack(Material.DIAMOND_PICKAXE, 1), new ItemStack(Material.EMERALD, 8), "Picareta de Diamante", "§a8 esmeraldas"));
 
         // items
         inv.addItem(createGuiItem(new ItemStack(Material.EGG, 2), new ItemStack(Material.IRON_INGOT, 12), "Ovos", "§a12 ferros"));

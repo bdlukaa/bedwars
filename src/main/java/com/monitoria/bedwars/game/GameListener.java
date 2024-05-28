@@ -76,10 +76,6 @@ public class GameListener implements Listener {
         if (!added) {
             player.setGameMode(GameMode.SPECTATOR);
         }
-
-        if (playersJoined >= 6) {
-            game.iniciar();
-        }
     }
 
     @EventHandler
