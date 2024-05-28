@@ -21,23 +21,10 @@ public final class BedWars extends JavaPlugin {
         game = new Game();
         getServer().getPluginManager().registerEvents(new GameListener(game), this);
         this.getCommand("iniciar_bedwars").setExecutor(new StartCommand());
-
-        Bukkit.getScheduler().runTaskTimer(this, new BedWars.HungerRunnable(), 0L, 1200L);
     }
 
     @Override
     public void onDisable() {
         Bukkit.getLogger().info(ChatColor.RED + "Disabled " + this.getName());
-    }
-    private static class HungerRunnable extends BukkitRunnable {
-        @Override
-        public void run() {
-            for (Player player : Bukkit.getOnlinePlayers()) {
-                if (player.getFoodLevel() < 20) {
-                    player.setFoodLevel(20);
-                    player.setSaturation(20);
-                }
-            }
-        }
     }
 }
