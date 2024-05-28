@@ -4,14 +4,12 @@ import com.monitoria.bedwars.elements.ItemSpawner;
 import com.monitoria.bedwars.elements.Shop;
 import com.monitoria.bedwars.elements.Team;
 import org.bukkit.*;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Player;
-import org.bukkit.entity.Villager;
+import org.bukkit.entity.*;
 import org.bukkit.inventory.ItemType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Game {
@@ -123,6 +121,16 @@ public class Game {
         itemSpawnPoints.add(new ItemSpawner(new Location(world, -12, 57 + 2, 10), Material.EMERALD, 500));
         itemSpawnPoints.add(new ItemSpawner(new Location(world, -136, 51 + 2, 0), Material.EMERALD, 500));
         itemSpawnPoints.add(new ItemSpawner(new Location(world, -78, 51 + 2, 1), Material.DIAMOND, 300));
+
+        for (Entity entity : world.getEntities()) {
+            if (entity instanceof Item) {
+                entity.remove();
+            }
+
+            if (entity instanceof Villager) {
+                entity.remove();
+            }
+        }
     }
 
 
