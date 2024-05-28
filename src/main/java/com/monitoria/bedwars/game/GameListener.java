@@ -2,6 +2,7 @@ package com.monitoria.bedwars.game;
 
 import com.monitoria.bedwars.elements.Shop;
 import com.monitoria.bedwars.elements.Team;
+import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -14,6 +15,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.player.PlayerBedEnterEvent;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.EventHandler;
@@ -208,6 +210,13 @@ public class GameListener implements Listener {
             event.setCancelled(true);
             event.setFoodLevel(20);
         }
+    }
+
+    @EventHandler
+    public void onSleep(PlayerBedEnterEvent event) {
+        Player player = event.getPlayer();
+        event.setCancelled(true);
+        player.sendMessage(ChatColor.RED + "You can't sleep!");
     }
 
 }
