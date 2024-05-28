@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
@@ -167,15 +168,21 @@ public class GameListener implements Listener {
 
     @EventHandler
     void onPlayerRespawn(PlayerRespawnEvent event) {
-        
         Player player = event.getPlayer();
         Inventory playerInv = player.getInventory();
         playerInv.addItem(new ItemStack(Material.WOODEN_SWORD));
+
+        for (Team team : game.teams) {
+            for (Player teamPlayer : team.getPlayers()) {
+                if (teamPlayer == player) {
+                    event.setRespawnLocation(new Location(player.getWorld(), team.x, team.y, team.z));
+                }
+            }
+        }
     }
 
     @EventHandler
     void onInventoryClick(InventoryClickEvent event) {
-
         if (event.getInventory() == Shop.inv) {
             int slot = event.getRawSlot();
             ItemStack stack = event.getInventory().getItem(slot);
