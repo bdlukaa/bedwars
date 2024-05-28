@@ -128,10 +128,11 @@ public class GameListener implements Listener {
 
         for (Team team : game.teams) {
             if (block.getType() == team.bedMaterial) {
+                event.setDropItems(false);
                 team.isBedActive = false;
                 System.out.println("Cama " + team.color.toString() + " quebrada");
 
-                event.setDropItems(false);
+
             }
         }
     }
@@ -154,7 +155,7 @@ public class GameListener implements Listener {
         //Não se bater no time
         Team team = null;
         for (Team t : game.teams) {
-            for (Player teamPlayer : team.getPlayers()) {
+            for (Player teamPlayer : t.getPlayers()) {
                 if (teamPlayer == event.getPlayer()) {
                     for (Player otherPlayer : team.getPlayers()){
                         if (otherPlayer == entity2){
